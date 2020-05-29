@@ -189,26 +189,33 @@
    
    (f)
    
-    #include<stdio.h>
-    #include<conio.h>
-    int main()
+    #include <stdio.h>
+int main()
+{
+    char b[10];
+    int m[10];
+    int s=0,i;
+    printf("enter the 10 digit ISBN number:\n");
+    scanf("%[^\n]s",b);
+    for(i=9;i>=0;i--)
     {
-	char isbn[15];
-	int i, sum = 0;
-	printf("\nEnter 10 digit ISBN number : ");
-	gets_s(isbn);
-	for (i = 0; i <= 9; i++)
-	{
-		isbn[i] -= 48;/*Converting characters into numerals*/
-		sum = sum + ((i + 1)*isbn[i]);/*checking the condition of the ISBN validity*/
-	}
-	if (sum % 11)/*If not divisble by 11*/
-		puts("\nISBN number is wrong.");
-	else
-		puts("\nISBN number is valid.");
-	_getch();
-	return 0;
+        if(b[i]=='x'||b[i]=='X')
+        m[i]=10;
+        else
+        m[i]=b[i]-48;
+        s=s+(10-i)*m[i];
     }
+    for(i=0;i<=9;i++)
+    printf("%d ",m[i]);/*check the elements of the integer array*/
+    printf("\n%d\n",s);/*check the value of s*/
+    if(s%11==0)
+        puts("ISBN number is correct");
+    else
+    puts("ISBN number is not correct");
+
+    return 0;
+}
+
   
   (g)
    
